@@ -1,0 +1,20 @@
+body{
+    padding: 100px;
+}
+#submit{
+    background-color: green;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+#login-area{
+    width: 50%;
+    margin: 0 auto;
+}
+#dasboard-area{
+    display: none;
+}
