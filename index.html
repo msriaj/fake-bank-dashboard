@@ -44,7 +44,7 @@
                 <div class="col-md-4">
                     <div class="card bg p-5 mt-5 bg-success shadow-lg rounded-lg">
                         <h4>Deposit</h4>
-                        <h1 class="mt-4">$ <span id="totalDiposit">0</span></h1>
+                        <h1 class="mt-4">$ <span id="curentDiposit">0</span></h1>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card withdraw shadow-lg rounde-lg  p-5 mt-5">
+                    <div id="withdrawHide" class="card withdraw shadow-lg rounde-lg  p-5 mt-5">
                   
                             <h3>Withdraw</h3>
                             <div class="input-group mb-3 mt-3">
@@ -112,69 +112,101 @@
        document.getElementById("dasboard-area").style.display="none";
       });
 
-    // // diposit /  add Money 
-    // function currentValue (id){
-    //     const oldValue = document.getElementById(id).innerText;
-    //     return parseFloat(oldValue);
-    // }
 
-    // function inputValue(id){
-    //     inputValue1 = document.getElementById(id).value;
-    //     return parseFloat(inputValue1);
-    // }
+    //   withDrawAmmount Area
 
-    // function spanUpdatValue(id, id2){
-    //     spanNewValue = id + id2;
-    //     return document.getElementById(id).innerText=spanNewValue;
-    // }
-
-    
+      const withdrawBTn = document.getElementById("addWithdraw");
+      withdrawBTn.addEventListener("click", function(){
+        const withDrawAmmount = getInputNumber("withdrawAmmount");
+        spanTextUpdate("curentWithdraw", withDrawAmmount );
+        spanTextUpdate("curentBalance", -1 * withDrawAmmount ) ;
 
 
-
-    // const addDeposit = document.getElementById("addDeposit");
-
-    // addDeposit.addEventListener(click, spanUpdatValue(currentValue("totalDiposit"), inputValue("depositAmmount")))
-
-
-
-
-
-
-
-
-
-
-
-
-    const diposit = document.getElementById("addDeposit");
-
-    diposit.addEventListener("click",function () {
-    const totalDiposit = document.getElementById("totalDiposit").innerText;
-     const dipositAmmount = document.getElementById("depositAmmount").value;
-     const  newDiposit = parseFloat(dipositAmmount) + parseFloat(totalDiposit);
-     const curentBalance = document.getElementById("curentBalance").innerHTML;
-     const curentBalanceNumber= parseFloat (curentBalance);
-     const newcurentBalance = curentBalanceNumber +parseFloat(dipositAmmount);
-     document.getElementById("totalDiposit").innerText=newDiposit;
-     document.getElementById("curentBalance").innerHTML=newcurentBalance;
+        // withDrawAmmount hide 
+        
+        const curentBalance= document.getElementById("curentBalance").innerText
+        const curentBalanceNumber = parseFloat(curentBalance);
+        if(curentBalanceNumber > 0){
+            document.getElementById("withdrawHide").style.display="none";
+        }
     })
 
-    // withdraw
-
-    const withdraw = document.getElementById("addWithdraw");
-
-    withdraw.addEventListener("click",function () {
-
-    const curentWithdraw = document.getElementById("curentWithdraw").innerText;
-     const withdrawAmmount = document.getElementById("withdrawAmmount").value;
-     const  newwithdrawAmmount = parseFloat(withdrawAmmount) + parseFloat(curentWithdraw);
-     const curentBalance = document.getElementById("curentBalance").innerHTML;
-     const curentBalanceNumber= parseFloat (curentBalance);
-     const newcurentBalance = curentBalanceNumber - parseFloat(withdrawAmmount);
-     document.getElementById("curentWithdraw").innerText=newwithdrawAmmount;
-     document.getElementById("curentBalance").innerHTML=newcurentBalance;
+    // diposit Amount Area
+    const addDepositbtn = document.getElementById("addDeposit");
+    addDepositbtn.addEventListener("click", function(){
+        const depositAmmount = getInputNumber("depositAmmount");
+        spanTextUpdate("curentDiposit", depositAmmount )
+        spanTextUpdate("curentBalance",   depositAmmount ) 
     })
+
+
+    // functions
+
+      function getInputNumber(id){
+        const inputText = document.getElementById(id).value;
+        const inputNumber = parseFloat(inputText);
+        return inputNumber;
+      }
+
+      function spanTextUpdate(oldid, newammount){
+        const oldValue = document.getElementById(oldid).innerText;
+        const oldValueNumber= parseFloat(oldValue);
+        const updatedValue = oldValueNumber +newammount;
+        document.getElementById(oldid).innerText = updatedValue;
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //   document
+
+
+    // const diposit = document.getElementById("addDeposit");
+
+    // diposit.addEventListener("click",function () {
+    // const totalDiposit = document.getElementById("totalDiposit").innerText;
+    //  const dipositAmmount = document.getElementById("depositAmmount").value;
+    //  const  newDiposit = parseFloat(dipositAmmount) + parseFloat(totalDiposit);
+    //  const curentBalance = document.getElementById("curentBalance").innerHTML;
+    //  const curentBalanceNumber= parseFloat (curentBalance);
+    //  const newcurentBalance = curentBalanceNumber +parseFloat(dipositAmmount);
+    //  document.getElementById("totalDiposit").innerText=newDiposit;
+    //  document.getElementById("curentBalance").innerHTML=newcurentBalance;
+    // })
+
+    // // withdraw
+
+    // const withdraw = document.getElementById("addWithdraw");
+
+    // withdraw.addEventListener("click",function () {
+
+    // const curentWithdraw = document.getElementById("curentWithdraw").innerText;
+    //  const withdrawAmmount = document.getElementById("withdrawAmmount").value;
+    //  const  newwithdrawAmmount = parseFloat(withdrawAmmount) + parseFloat(curentWithdraw);
+    //  const curentBalance = document.getElementById("curentBalance").innerHTML;
+    //  const curentBalanceNumber= parseFloat (curentBalance);
+    //  const newcurentBalance = curentBalanceNumber - parseFloat(withdrawAmmount);
+    //  document.getElementById("curentWithdraw").innerText=newwithdrawAmmount;
+    //  document.getElementById("curentBalance").innerHTML=newcurentBalance;
+    // })
 
   
 
