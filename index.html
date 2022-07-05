@@ -126,7 +126,8 @@
         
         const curentBalance= document.getElementById("curentBalance").innerText
         const curentBalanceNumber = parseFloat(curentBalance);
-        if(curentBalanceNumber > 0){
+       
+        if(curentBalanceNumber <= 0){
             document.getElementById("withdrawHide").style.display="none";
         }
     })
